@@ -1,14 +1,12 @@
 ﻿namespace FacioRatio.Whereby.Api
 {
-    //!!use JsConfig options to send camelCase so that we do not need to violate our naming conventions
     public class GetMeetingRequest : IDto<GetMeetingResponse>
     {
-#pragma warning disable IDE1006 // Naming Styles
         /// <summary>
         /// Example: 1
         /// meeting ID
         /// </summary>
-        public string meetingId { get; set; }
+        public string MeetingId { get; set; }
 
         /// <summary>
         /// Array of strings(Fields)
@@ -17,12 +15,12 @@
         /// hostRoomUrl - Include hostRoomUrl field in the meeting response.
         /// viewerRoomUrl - Include viewerRoomUrl field in the meeting response.
         /// </summary>
-        public string[] fields { get; set; }
-#pragma warning restore IDE1006 // Naming Styles
+        public string[] Fields { get; set; }
     }
 
     public class GetMeetingResponse : Meeting
     {
+        public string Error { get; set; }
     }
 }
 

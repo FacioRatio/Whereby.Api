@@ -1,6 +1,5 @@
 ﻿using ServiceStack;
 using System.Net;
-using System.Runtime.CompilerServices;
 
 namespace FacioRatio.Whereby.Api
 {

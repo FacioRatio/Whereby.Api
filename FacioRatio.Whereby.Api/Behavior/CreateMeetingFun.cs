@@ -1,4 +1,5 @@
 ﻿using ServiceStack;
+using ServiceStack.Text;
 
 namespace FacioRatio.Whereby.Api
 {
@@ -10,9 +11,17 @@ namespace FacioRatio.Whereby.Api
         {
             async Task<string> fun(Action<HttpRequestMessage> req, Action<HttpResponseMessage> res)
             {
-                var dto = Dto as CreateMeetingRequest;
-                var url = Host + Endpoint;
-                return await url.PostStringToUrlAsync(dto.ToJson(), "application/json", null, req, res);
+                using (JsConfig.With(new Config()
+                {
+                    TextCase = TextCase.CamelCase,
+                    PropertyConvention = PropertyConvention.Lenient,
+                    DateHandler = DateHandler.ISO8601
+                }))
+                {
+                    var dto = (Dto as CreateMeetingRequest).ToJson();
+                    var url = Host + Endpoint;
+                    return await url.PostStringToUrlAsync(dto, "application/json", null, req, res);
+                }
             }
             return fun;
         }

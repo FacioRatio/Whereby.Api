@@ -39,7 +39,7 @@ namespace FacioRatio.Whereby.Api
                         }
                         return apiResult;
                     });
-                    //!!need a railway version of the ApiCall that returns a Failure under retry conditions
+                    //!!need the railway version of the ApiCall to return a Failure under retry conditions
                     //.OnFailure(async ex =>
                     //{
                     //    await Task.Delay((apiResult.ApiRateLimit.Reset + 1) * 1000);

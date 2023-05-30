@@ -1,4 +1,5 @@
 ﻿using ServiceStack;
+using ServiceStack.Text;
 
 namespace FacioRatio.Whereby.Api
 {
@@ -10,19 +11,20 @@ namespace FacioRatio.Whereby.Api
         {
             async Task<string> fun(Action<HttpRequestMessage> req, Action<HttpResponseMessage> res)
             {
-                var dto = Dto as GetMeetingsRequest;
-                var qs = dto.ToQueryString();
-                var url = Host + Endpoint;
-                url += String.IsNullOrWhiteSpace(qs) ? "" : ("?" + qs);
-                return await url.GetStringFromUrlAsync("application/json", req, res);
-                //return url.GetJsonFromUrl(requestFilter, responseFilter); //this doesn't set the Content-Type!
-                //var bytes = url.SendBytesToUrl(
-                //    method: "GET",
-                //    contentType: "application/json",
-                //    accept: "*/*",
-                //    requestFilter: requestFilter,
-                //    responseFilter: responseFilter);
-                //return Encoding.Default.GetString(bytes);
+                using (JsConfig.With(new Config()
+                {
+                    TextCase = TextCase.CamelCase,
+                    PropertyConvention = PropertyConvention.Lenient,
+                    DateHandler = DateHandler.ISO8601
+                }))
+                {
+                    var dto = Dto as GetMeetingsRequest;
+                    
+                    var qs = dto.ToQueryString();
+                    var url = Host + Endpoint;
+                    url += String.IsNullOrWhiteSpace(qs) ? "" : ("?" + qs);
+                    return await url.GetStringFromUrlAsync("application/json", req, res);
+                }
             }
             return fun;
         }

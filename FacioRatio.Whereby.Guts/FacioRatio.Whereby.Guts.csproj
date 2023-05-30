@@ -2,9 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	<Authors>Eric Robson</Authors>
+	<Company />
+	<Product />
+	<Description>Code common to FacioRatio.Whereby.Api and FacioRatio.Whereby.Api.Railway</Description>
+	<Copyright></Copyright>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<RepositoryUrl>https://github.com/FacioRatio/Whereby.Api</RepositoryUrl>
+	<RepositoryType>Github</RepositoryType>
+	<PackageTags>whereby, rest, c#, csharp</PackageTags>
+	<Version>0.9.2</Version>
+	<AssemblyVersion>0.9.2.0</AssemblyVersion>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<FileVersion>0.9.2.0</FileVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Link="LICENSE">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="ServiceStack.Text" Version="6.8.0" />

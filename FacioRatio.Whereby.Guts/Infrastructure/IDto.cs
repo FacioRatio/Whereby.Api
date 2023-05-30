@@ -8,6 +8,13 @@ namespace FacioRatio.Whereby.Api
 
     public static class IDtoExtensions
     {
+        public static string ToFirstCharLowerCase(this string str)
+        {
+            return char.IsUpper(str[0])
+                ? (str.Length == 1 ? str.ToLower() : char.ToLower(str[0]) + str[1..])
+                : str;
+        }
+
         //modified from https://ole.michelsen.dk/blog/serialize-object-into-a-query-string-with-reflection.html
         public static string ToQueryString<TResult>(this IDto<TResult> dto, string separator = ",")
         {
@@ -19,7 +26,7 @@ namespace FacioRatio.Whereby.Api
                 .Where(x => x.CanRead)
                 .Where(x => x.GetValue(dto, null) != null)
                 .Where(x => !x.GetGetMethod(true).IsFinal) //to exclude properties that IDto inherits from other interfaces
-                .ToDictionary(x => x.Name, x => x.GetValue(dto, null));
+                .ToDictionary(x => x.Name.ToFirstCharLowerCase(), x => x.GetValue(dto, null));
 
             // Get names for all IEnumerable properties (excl. string)
             var propertyNames = properties

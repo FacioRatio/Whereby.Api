@@ -37,40 +37,6 @@ namespace FacioRatio.Whereby.Api
 
             var call = Fun.Generate(ApiCreds.Host, Dto);
 
-            //switch (Dto.Verb.ToLower())
-            //{
-            //    case "get":
-            //        var qs = Dto.ToQueryString();
-            //        url += (String.IsNullOrWhiteSpace(qs) ? "" : ("?" + qs));
-            //        call = () =>
-            //        {
-            //            //return url.GetJsonFromUrl(requestFilter, responseFilter); //this doesn't set the Content-Type!
-            //            //var bytes = url.SendBytesToUrl(
-            //            //    method: "GET",
-            //            //    contentType: "application/json",
-            //            //    accept: "*/*",
-            //            //    requestFilter: requestFilter,
-            //            //    responseFilter: responseFilter);
-            //            //return Encoding.Default.GetString(bytes);
-            //            return url.GetStringFromUrl("application/json", requestFilter, responseFilter);
-            //        };
-            //        break;
-            //    case "post":
-            //        call = () =>
-            //        {
-            //            var body = JsonObject.Parse(Dto.ToJson());
-            //            body.Remove("__type");
-            //            body.Remove("Verb");
-            //            body.Remove("Endpoint");
-            //            var json = body.ToJson();
-            //            //return url.PostStringToUrl(json, "application/json", "*/*", requestFilter, responseFilter);
-            //            return url.PostJsonToUrl(json, requestFilter, responseFilter);
-            //        };
-            //        break;
-            //    default:
-            //        throw new ArgumentException("Only 'get' and 'post' verbs are supported.");
-            //}
-
             try
             {
                 string body = await call(requestFilter, responseFilter);

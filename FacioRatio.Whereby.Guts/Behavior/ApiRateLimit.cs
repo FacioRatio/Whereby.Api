@@ -1,5 +1,4 @@
 ﻿using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
 
 namespace FacioRatio.Whereby.Api
 {
