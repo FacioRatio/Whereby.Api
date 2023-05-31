@@ -3,7 +3,7 @@ using ServiceStack.Text;
 
 namespace FacioRatio.Whereby.Api
 {
-    public class DeleteMeetingFun : IApiFun<DeleteMeetingResponse>
+    internal class DeleteMeetingFun : IApiFun<DeleteMeetingResponse>
     {
         public string Endpoint => "meetings";
 
