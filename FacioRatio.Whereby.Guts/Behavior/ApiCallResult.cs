@@ -44,7 +44,7 @@ namespace FacioRatio.Whereby.Api
         }
     }
 
-    public sealed class ApiCallResult
+    internal sealed class ApiCallResult
     {
         internal static async Task<ApiCallResult<T>> New<T>(WebException ex)
         {
