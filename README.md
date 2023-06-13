@@ -1,4 +1,4 @@
-# CSharpRailway
+# Whereby.Api
 A C# library for Whereby's REST API
 
 Documentation pending.
